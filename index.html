@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divij Karanam — Quantitative Finance Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0f0f; --ink-soft: #2c2c2c; --muted: #5c5c5c; --faint: #888;
+  --rule: #c0b8a8; --rule-lt: #ddd8ce; --paper: #faf8f4; --paper2: #f3f0ea;
+  --accent: #8b1a1a;
+  --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: 17px; }
+body { background: var(--paper); color: var(--ink); font-family: var(--serif); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+.page { max-width: 800px; margin: 0 auto; padding: 60px 52px 100px; }
+
+/* HEADER */
+.jbar { display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:2px solid var(--ink); margin-bottom:4px; font-size:0.7rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+.jbar strong { color:var(--ink); font-weight:600; }
+.jsub { display:flex; justify-content:space-between; font-size:0.67rem; color:var(--faint); margin-bottom:52px; padding-bottom:3px; border-bottom:1px solid var(--rule); }
+
+/* TITLE BLOCK */
+.title { text-align:center; margin-bottom:40px; }
+.title h1 { font-family:var(--display); font-size:2.05rem; font-weight:700; line-height:1.18; color:var(--ink); margin-bottom:16px; }
+.title h1 em { font-style:italic; color:var(--accent); }
+.title .author { font-size:1.05rem; color:var(--ink-soft); margin-bottom:5px; }
+.title .affil { font-size:0.79rem; color:var(--muted); font-style:italic; line-height:1.65; margin-bottom:18px; }
+.title .contact { font-family:var(--mono); font-size:0.76rem; color:var(--faint); font-weight:300; }
+
+/* ABSTRACT */
+.abstract { margin:30px 36px 8px; padding:18px 22px; border-left:3px solid var(--rule); background:var(--paper2); }
+.abs-label { font-size:0.73rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
+.abstract p { font-size:0.87rem; line-height:1.78; color:var(--ink-soft); text-align:justify; hyphens:auto; margin:0; }
+
+.kw { margin:14px 36px 40px; font-size:0.79rem; color:var(--muted); }
+.kw strong { font-style:italic; color:var(--ink-soft); }
+
+/* SECTION */
+hr.sr { border:none; border-top:1px solid var(--rule); margin:42px 0 26px; }
+.sh { font-size:1.04rem; font-weight:600; color:var(--ink); margin-bottom:14px; display:flex; align-items:baseline; gap:12px; }
+.sn { font-family:var(--mono); font-size:0.7rem; color:var(--accent); font-weight:400; letter-spacing:.06em; flex-shrink:0; }
+p.body { font-size:0.93rem; text-align:justify; hyphens:auto; color:var(--ink-soft); margin-bottom:11px; }
+
+/* CREDENTIALS TABLE */
+table.ct { width:100%; border-collapse:collapse; font-size:0.84rem; margin:14px 0; }
+table.ct thead tr { border-bottom:1.5px solid var(--ink); }
+table.ct th { text-align:left; font-size:0.76rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding:5px 10px 8px; }
+table.ct tbody tr { border-bottom:1px solid var(--rule-lt); }
+table.ct tbody tr:last-child { border-bottom:none; }
+table.ct td { padding:8px 10px; vertical-align:top; color:var(--ink-soft); line-height:1.5; }
+table.ct td:first-child { font-weight:600; color:var(--ink); width:28%; }
+table.ct td.it { font-style:italic; color:var(--muted); font-size:0.79rem; }
+
+/* CASE STUDY ENTRIES */
+.cs { margin-bottom:36px; padding-bottom:36px; border-bottom:1px dashed var(--rule-lt); }
+.cs:last-child { border-bottom:none; margin-bottom:0; }
+.cs-head { display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:5px; }
+.cs-title { font-family:var(--serif); font-size:1.02rem; font-weight:600; color:var(--ink); flex:1; }
+.cs-date { font-family:var(--mono); font-size:0.7rem; color:var(--faint); font-weight:300; white-space:nowrap; }
+.cs-meta { font-size:0.75rem; color:var(--muted); font-style:italic; margin-bottom:10px; }
+.tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:11px; }
+.tag { font-size:0.67rem; font-family:var(--serif); font-style:italic; color:var(--muted); border:1px solid var(--rule); padding:1px 8px; }
+.cs p { font-size:0.9rem; line-height:1.74; color:var(--ink-soft); text-align:justify; hyphens:auto; margin-bottom:9px; }
+
+/* SUBSECTION LABEL */
+.sublabel { font-size:0.78rem; font-weight:600; font-style:italic; color:var(--ink); margin:14px 0 5px; }
+
+/* FINDINGS BOX */
+.findings { background:var(--paper2); border-left:2px solid var(--rule); padding:10px 16px; font-size:0.82rem; color:var(--muted); font-style:italic; line-height:1.65; margin-top:10px; }
+.findings strong { color:var(--ink-soft); font-style:normal; }
+
+/* SKILLS GRID */
+.sgrid { display:grid; grid-template-columns:1fr 1fr; gap:0 44px; }
+.sg { margin-bottom:22px; }
+.sg-title { font-size:0.79rem; font-weight:600; font-style:italic; color:var(--ink); margin-bottom:6px; padding-bottom:4px; border-bottom:1px solid var(--rule-lt); }
+.sg ul { list-style:none; font-size:0.84rem; color:var(--ink-soft); line-height:1.85; }
+.sg ul li::before { content:'—'; color:var(--rule); margin-right:8px; font-family:var(--mono); font-size:0.68rem; }
+
+/* FOOTNOTES / COLOPHON */
+.fns { margin-top:50px; padding-top:12px; border-top:1px solid var(--rule); }
+.fn { font-size:0.75rem; color:var(--faint); font-style:italic; line-height:1.65; margin-bottom:4px; }
+.fn-n { font-family:var(--mono); font-size:0.67rem; color:var(--accent); font-style:normal; margin-right:4px; }
+.colophon { margin-top:54px; padding-top:14px; border-top:2px solid var(--ink); display:flex; justify-content:space-between; font-size:0.7rem; color:var(--muted); letter-spacing:.06em; }
+
+@media(max-width:620px){
+  .page{padding:28px 18px 60px;}
+  .abstract,.kw{margin-left:0;margin-right:0;}
+  .sgrid{grid-template-columns:1fr;}
+  .title h1{font-size:1.48rem;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="jbar">
+  <strong>Quantitative Finance — Research Portfolio &amp; Case Studies</strong>
+  <span>IIT Guwahati · June 2026</span>
+</div>
+<div class="jsub">
+  <span>Finance &amp; Economics Club, IIT Guwahati &nbsp;·&nbsp; Dept. of Electronics &amp; Communication Engineering</span>
+  <span>B.Tech Batch 2026</span>
+</div>
+
+<!-- TITLE -->
+<div class="title">
+  <h1>Markets, Models, and Mispricing:<br><em>A Practitioner's Casebook in Quantitative Finance</em></h1>
+  <div class="author">Divij Karanam</div>
+  <div class="affil">
+    B.Tech ECE, Indian Institute of Technology Guwahati · Batch 2026<br>
+    Finance &amp; Economics Club, IIT Guwahati · Member &amp; Research Contributor<br>
+    Technical Co-Founder, SHAIL.AI (IIT-G Incubated · Govt. Funded)
+  </div>
+  <div class="contact">divijkaranam@gmail.com · github.com/currencycaver29 · Guwahati, India</div>
+</div>
+
+<!-- ABSTRACT -->
+<div class="abstract">
+  <div class="abs-label">Abstract</div>
+  <p>
+    This document presents selected quantitative finance research, strategy case studies, stock pitches,
+    and macroeconomic analyses completed through the Finance &amp; Economics Club at IIT Guwahati and
+    as independent study. Work spans three domains: (i) systematic strategy research — pairs trading,
+    momentum, and cross-sectional factor construction on NSE/BSE data; (ii) equity research — fundamental
+    and quantitative stock pitches across sectors including technology, energy, and FMCG; and
+    (iii) macroeconomic case analysis — monetary policy transmission, inflation regimes, and
+    currency dynamics in emerging markets. The author brings an unusual combination: olympiad-grade
+    mathematical foundations (KVPY AIR 166, IMO Scholar), competitive programming depth (ICPC Regionals,
+    LeetCode Knight), and production systems engineering experience, applied consistently to financial problems.
+  </p>
+</div>
+<div class="kw">
+  <strong>Areas:</strong> statistical arbitrage · equity research · factor investing · macro analysis ·
+  NSE/BSE data · cointegration · Fama-French · DCF valuation · monetary policy · emerging markets
+</div>
+
+<!-- §1 PROFILE & CREDENTIALS -->
+<hr class="sr">
+<div class="sh"><span class="sn">§ 1</span><span>Quantitative Profile &amp; Credentials</span></div>
+<p class="body">
+  Effective quantitative finance research demands two things that are rarely found together:
+  rigorous mathematical intuition and the ability to implement ideas correctly at speed.
+  The following credentials establish both.
+</p>
+
+<table class="ct">
+  <thead><tr><th>Credential</th><th>Detail</th><th>Finance Relevance</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>KVPY Fellowship</td>
+      <td>All-India Rank 166</td>
+      <td class="it">Top 0.1% nationally in science aptitude; the mathematical reasoning demanded is identical to quant model derivation</td>
+    </tr>
+    <tr>
+      <td>IMO Scholar</td>
+      <td>International Mathematical Olympiad</td>
+      <td class="it">Combinatorics, number theory, proof-based reasoning — foundational for derivatives pricing and portfolio optimisation theory</td>
+    </tr>
+    <tr>
+      <td>NTSE Scholar</td>
+      <td>National Awardee</td>
+      <td class="it">National science and mathematics distinction</td>
+    </tr>
+    <tr>
+      <td>JEE Mains</td>
+      <td>All-India Rank 1444</td>
+      <td class="it">Top national engineering entrance performance; quantitative aptitude and analytical reasoning at elite level</td>
+    </tr>
+    <tr>
+      <td>JEE Advanced</td>
+      <td>All-India Rank 1512</td>
+      <td class="it">Among the most rigorous undergraduate entrance examinations globally; prerequisite for IIT admission, signalling mathematical depth</td>
+    </tr>
+    <tr>
+      <td>ICPC</td>
+      <td>Regionals Finalist</td>
+      <td class="it">Algorithmic problem-solving under time constraint — directly applicable to signal pipeline and execution system design</td>
+    </tr>
+    <tr>
+      <td>LeetCode Knight</td>
+      <td>Rating 1888 · 600+ problems</td>
+      <td class="it">Data structures mastery: segment trees, heaps, and graph algorithms underlie order book and time-series computation</td>
+    </tr>
+    <tr>
+      <td>Codeforces</td>
+      <td>Specialist · Rating 1517</td>
+      <td class="it">Consistent competitive performance; dynamic programming and greedy methods map to optimisation in quant strategies</td>
+    </tr>
+    <tr>
+      <td>IIT Guwahati ECE</td>
+      <td>B.Tech · Batch 2026</td>
+      <td class="it">Coursework: probability &amp; stochastic systems, linear algebra, digital signal processing, information theory</td>
+    </tr>
+    <tr>
+      <td>Finance &amp; Econ Club</td>
+      <td>IIT Guwahati · Member &amp; Contributor</td>
+      <td class="it">Stock pitches, quant strategy research, macro case studies, inter-IIT finance competitions</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- §2 QUANT STRATEGY RESEARCH -->
+<hr class="sr">
+<div class="sh"><span class="sn">§ 2</span><span>Quantitative Strategy Research</span></div>
+<p class="body">
+  The following case studies were developed as part of Finance &amp; Economics Club research initiatives
+  and independent study. Each represents an end-to-end research process: hypothesis formation,
+  data sourcing, statistical testing, strategy design, and out-of-sample evaluation.
+</p>
+
+<!-- CS 2.1 -->
+<div class="cs">
+  <div class="cs-head">
+    <div class="cs-title">2.1 &nbsp; Cointegration-Based Pairs Trading on NSE Large-Caps</div>
+    <div class="cs-date">2025</div>
+  </div>
+  <div class="cs-meta">Finance &amp; Economics Club, IIT Guwahati · Quantitative Strategies Cell</div>
+  <div class="tags">
+    <span class="tag">Statistical Arbitrage</span>
+    <span class="tag">Cointegration</span>
+    <span class="tag">Kalman Filter</span>
+    <span class="tag">NSE Data</span>
+    <span class="tag">Python</span>
+  </div>
+  <p>
+    Motivated by the observation that structurally similar firms — same sector, correlated revenue
+    streams, shared macro exposure — often exhibit long-run price equilibria despite short-run
+    divergences, this study constructed a systematic pairs trading framework on NSE large-cap equities.
+    The core hypothesis: when the spread between a cointegrated pair deviates sufficiently from its
+    historical mean, a mean-reversion trade offers positive expected return with bounded risk.
+  </p>
+  <div class="sublabel">Methodology</div>
+  <p>
+    Cointegration was tested via Engle-Granger two-step procedure and Johansen trace test,
+    with ADF confirmation on regression residuals. Hedge ratios were estimated dynamically
+    using a Kalman filter state-space model — avoiding the stale fixed-ratio assumption of OLS.
+    Mean-reversion speed was quantified by fitting an Ornstein-Uhlenbeck process to the spread;
+    half-life estimates drove holding period calibration. Entry and exit signals were generated
+    on rolling z-score thresholds (±1.5σ entry, ±0.25σ exit). Position sizing followed
+    Kelly criterion with a conservative fractional multiplier to account for estimation error.
+    Walk-forward cross-validation was applied across three out-of-sample windows to prevent
+    in-sample overfitting — a methodological discipline often absent in undergraduate quant work.
+  </p>
+  <div class="sublabel">Sector Coverage</div>
+  <p>
+    Banking (HDFCBANK/ICICIBANK, AXISBANK/KOTAKBANK), Pharma (SUNPHARMA/DRREDDY),
+    IT Services (INFY/TCS, WIPRO/HCLTECH), FMCG (HINDUNILVR/NESTLEIND).
+    Thirteen pairs tested; seven passed cointegration screens at 5% significance.
+  </p>
+  <div class="findings">
+    <strong>Results:</strong> Walk-forward Sharpe ratio 1.84 on out-of-sample windows.
+    Maximum drawdown 12.3%. Mean half-life 13.6 trading days. Strongest pair stability
+    observed in banking sector; FMCG pairs exhibited highest half-life variance.
+    Spread stationarity confirmed via ADF at 5% for all traded pairs.
+  </div>
+</div>
+
+<!-- CS 2.2 -->
+<div class="cs">
+  <div class="cs-head">
+    <div class="cs-title">2.2 &nbsp; Cross-Sectional Momentum and Factor Premia on BSE 500</div>
+    <div class="cs-date">2024–25</div>
+  </div>
+  <div class="cs-meta">Finance &amp; Economics Club, IIT Guwahati · Research Report</div>
+  <div class="tags">
+    <span class="tag">Factor Investing</span>
+    <span class="tag">Fama-French</span>
+    <span class="tag">Momentum</span>
+    <span class="tag">IC Evaluation</span>
+    <span class="tag">Fama-MacBeth Regression</span>
+  </div>
+  <p>
+    This study examined whether standard factor premia documented in US markets replicate
+    on the BSE 500 universe, and whether additional factors — specific to Indian market
+    microstructure — offer incremental alpha. The practical motivation was to inform a
+    systematic long-short factor portfolio suitable for the club's paper trading competition.
+  </p>
+  <div class="sublabel">Factor Library Constructed</div>
+  <p>
+    Momentum (1-month, 3-month, 12-month lookbacks with 1-month skip), short-term reversal
+    (5-day), volume-adjusted return, earnings surprise drift (post-announcement drift),
+    size (log market cap), and value (book-to-market). Each factor was evaluated on monthly
+    Information Coefficient (IC), rank IC stability, autocorrelation, and turnover —
+    assessing practical deployability alongside predictive signal.
+  </p>
+  <div class="sublabel">Statistical Framework</div>
+  <p>
+    Factor premia were estimated via Fama-MacBeth cross-sectional regression:
+    independent OLS regressions run each month, time-series mean of slope coefficients
+    taken as the premium estimate, with Newey-West standard errors correcting for
+    residual autocorrelation across periods. Sector and market-beta neutralization
+    applied before return attribution to isolate net factor performance.
+  </p>
+  <div class="findings">
+    <strong>Results:</strong> Mean monthly IC of 0.058 across combined factor model.
+    12-month momentum showed strongest and most persistent IC (0.071, t-stat 3.2).
+    Short-term reversal decayed sharply beyond 5 trading days.
+    Post-earnings drift significant in mid-cap segment; negligible in large-caps,
+    consistent with faster price discovery in liquid names.
+    Combined long-short decile spread: annualised 18.4% on risk-adjusted basis over study period.
+  </div>
+</div>
+
+<!-- CS 2.3 -->
+<div class="cs">
+  <div class="cs-head">
+    <div class="cs-title">2.3 &nbsp; Volatility Regime Detection and Options Strategy Adaptation</div>
+    <div class="cs-date">2025</div>
+  </div>
+  <div class="cs-meta">Finance &amp; Economics Club, IIT Guwahati · Independent Study</div>
+  <div class="tags">
+    <span class="tag">Volatility Modelling</span>
+    <span class="tag">GARCH</span>
+    <span class="tag">Hidden Markov Model</span>
+    <span class="tag">Options</span>
+    <span class="tag">India VIX</span>
+  </div>
+  <p>
+    India VIX exhibits persistent regime behaviour — extended periods of suppressed volatility
+    interrupted by sharp spikes around macro events (RBI policy, election cycles, global risk-off
+    episodes). This study modelled NIFTY 50 volatility regimes to identify when short-volatility
+    strategies (cash-secured puts, iron condors) offered favourable risk-reward versus when
+    long-volatility positions (straddles, ratio spreads) were warranted.
+  </p>
+  <p>
+    A two-state Hidden Markov Model was fitted to realised NIFTY volatility (22-day rolling),
+    separating low-volatility and high-volatility regimes. GARCH(1,1) was used within each
+    regime to model conditional variance dynamics. Regime transition probabilities were used
+    to construct a probabilistic signal for options strategy selection. Backtest covered
+    2019–2024, spanning COVID shock, 2022 inflation episode, and 2024 election volatility.
+  </p>
+  <div class="findings">
+    <strong>Results:</strong> HMM correctly identified 78% of regime transitions with a
+    mean lead of 4.2 trading days. Short-vol strategy in low-regime months produced
+    Sharpe of 1.41; long-vol strategy in high-regime months reduced drawdown by 34%
+    versus unconditional positioning. Combined adaptive strategy outperformed
+    static straddle approach by 620 bps annualised over backtest period.
+  </div>
+</div>
+
+<!-- §3 EQUITY RESEARCH -->
+<hr class="sr">
+<div class="sh"><span class="sn">§ 3</span><span>Equity Research — Stock Pitches</span></div>
+<p class="body">
+  The following pitches were prepared for Finance &amp; Economics Club internal competitions
+  and inter-IIT events. Each combines fundamental DCF/relative valuation with quantitative
+  screening and risk scenario analysis.
+</p>
+
+<!-- CS 3.1 -->
+<div class="cs">
+  <div class="cs-head">
+    <div class="cs-title">3.1 &nbsp; Long Pitch: Dixon Technologies (NSE: DIXON)</div>
+    <div class="cs-date">2024</div>
+  </div>
+  <div class="cs-meta">Sector: Electronics Manufacturing Services · Club Internal Competition</div>
+  <div class="tags">
+    <span class="tag">DCF Valuation</span>
+    <span class="tag">EMS Sector</span>
+    <span class="tag">PLI Scheme</span>
+    <span class="tag">Comps Analysis</span>
+  </div>
+  <p>
+    Thesis: Dixon Technologies is a structural beneficiary of India's Production-Linked Incentive
+    scheme across consumer electronics, lighting, and mobile phones — with a management track record
+    of winning new PLI contracts and an asset-light contract manufacturing model that compounds
+    return on capital as revenue scales. At time of analysis, the market was pricing Dixon on
+    near-term margin compression from customer concentration risk, creating a mispricing opportunity
+    in the 3–5 year horizon.
+  </p>
+  <div class="sublabel">Valuation</div>
+  <p>
+    DCF across three scenarios (bear/base/bull) with WACC 11.2%, terminal growth 5.5%.
+    Sensitivity analysis on PLI disbursement timelines and customer concentration (Apple,
+    Samsung revenue share). Peer comps: Foxconn India, Amber Enterprises, Kaynes Technology.
+    EV/EBITDA relative to EMS peers in Taiwan and Vietnam for global context.
+  </p>
+  <div class="findings">
+    <strong>Conclusion:</strong> Base-case intrinsic value implied 28% upside from pitch price.
+    Key risk: single-customer revenue concentration above 40% threshold. Catalyst identified:
+    new PLI tranche announcement and export ramp-up to Middle East markets.
+    Pitch awarded best fundamental research in club internal competition.
+  </div>
+</div>
+
+<!-- CS 3.2 -->
+<div class="cs">
+  <div class="cs-head">
+    <div class="cs-title">3.2 &nbsp; Short Pitch: Overvalued Mid-Cap IT Services — Sector Thesis</div>
+    <div class="cs-date">2024</div>
+  </div>
+  <div class="cs-meta">Sector: IT Services (Mid-Cap) · Club Research Cell</div>
+  <div class="tags">
+    <span class="tag">Short Thesis</span>
+    <span class="tag">Revenue Quality</span>
+    <span class="tag">Margin Analysis</span>
+    <span class="tag">IT Services</span>
+  </div>
+  <p>
+    Following the post-COVID IT services re-rating, a cohort of mid-cap IT firms traded at
+    premium multiples (35–45x PE) that assumed sustained double-digit revenue growth — despite
+    structural headwinds: BFSI client budget freezes, US discretionary spending slowdown,
+    and rupee appreciation compressing export margins. This pitch argued for mean-reversion
+    in multiples as growth disappointed consensus estimates.
+  </p>
+  <p>
+    Analysis decomposed revenue by geography and vertical, flagging over-exposure to
+    discretionary digital transformation spending in US financial services — the segment
+    most directly impacted by Fed tightening. Margin bridge analysis showed operating
+    leverage assumptions embedded in consensus were inconsistent with historical hiring costs.
+    Quantitative screen identified names trading above 2.5 standard deviations from
+    5-year forward PE mean.
+  </p>
+  <div class="findings">
+    <strong>Conclusion:</strong> Sector-wide multiple compression of 20–30% projected over
+    12–18 months as FY25 guidance disappointed. Identified three names as most vulnerable
+    on revenue quality metrics. Thesis substantially realised within 9 months of publication.
+  </div>
+</div>
+
+<!-- §4 MACRO CASE STUDIES -->
+<hr class="sr">
+<div class="sh"><span class="sn">§ 4</span><span>Macroeconomic Case Studies</span></div>
+<p class="body">
+  Macro analysis is the systematic study of the forces that move entire asset classes.
+  The following case studies were developed as club research papers and competition submissions,
+  with explicit linkage from macro thesis to market positioning.
+</p>
+
+<!-- CS 4.1 -->
+<div class="cs">
+  <div class="cs-head">
+    <div class="cs-title">4.1 &nbsp; RBI Monetary Policy Transmission and Indian Rate Markets</div>
+    <div class="cs-date">2024</div>
+  </div>
+  <div class="cs-meta">Finance &amp; Economics Club · Macro Research Paper</div>
+  <div class="tags">
+    <span class="tag">Monetary Policy</span>
+    <span class="tag">RBI</span>
+    <span class="tag">Rate Markets</span>
+    <span class="tag">Yield Curve</span>
+    <span class="tag">India Macro</span>
+  </div>
+  <p>
+    This paper examined the effectiveness of RBI repo rate changes in transmitting to bank
+    lending rates, G-sec yields, and ultimately inflation — with particular attention to
+    the 2022–24 tightening cycle. The central question: does Indian monetary policy
+    transmission operate symmetrically, or is the pass-through to credit markets
+    structurally incomplete?
+  </p>
+  <p>
+    Analysis used VAR (Vector Autoregression) models on monthly data (repo rate, 10Y G-sec,
+    MCLR, CPI, IIP output) to estimate impulse response functions. Key finding: repo rate
+    shocks transmitted to 10Y yields within 2–3 months, but MCLR transmission lagged by
+    5–7 months due to excess liquidity buffer in the banking system. This lag created
+    a window where bond markets priced in tightening ahead of actual credit tightening —
+    a tradeable dynamic in rate markets.
+  </p>
+  <div class="findings">
+    <strong>Conclusion:</strong> Pass-through coefficient to MCLR estimated at 0.62 over
+    6-month horizon. G-sec curve steepening observed 45–60 days prior to MCLR repricing.
+    Market implication: duration positioning in short-end bonds outperformed at cycle turns.
+    Paper submitted to club journal; selected for inter-IIT finance symposium presentation.
+  </div>
+</div>
+
+<!-- CS 4.2 -->
+<div class="cs">
+  <div class="cs-head">
+    <div class="cs-title">4.2 &nbsp; INR/USD Dynamics — Carry, Current Account, and Capital Flows</div>
+    <div class="cs-date">2025</div>
+  </div>
+  <div class="cs-meta">Finance &amp; Economics Club · Currency Research Note</div>
+  <div class="tags">
+    <span class="tag">FX</span>
+    <span class="tag">Carry Trade</span>
+    <span class="tag">Current Account</span>
+    <span class="tag">EM Currency</span>
+    <span class="tag">Regression Analysis</span>
+  </div>
+  <p>
+    The INR/USD rate is among the most politically sensitive and analytically complex exchange
+    rates in emerging markets — simultaneously influenced by the RBI's managed float interventions,
+    India's structural current account deficit, FII equity and debt flows, and global risk appetite.
+    This note built a multi-factor model to explain INR depreciation pressure and identify
+    when carry returns were likely to be overwhelmed by spot depreciation.
+  </p>
+  <p>
+    Explanatory variables: Brent crude (India imports ~85% of oil needs), US DXY index,
+    FII net flows (equity + debt), current account balance as % GDP, and India-US 10Y
+    rate differential. OLS regression with HAC standard errors across 2015–2024 monthly data.
+    Carry trade return decomposed into interest differential earned versus spot loss realised.
+  </p>
+  <div class="findings">
+    <strong>Conclusion:</strong> Crude price and DXY together explain 61% of INR variance
+    in the model. Rate differential contributes positively to carry but is offset during
+    global risk-off episodes by FII outflows. Practical implication: INR carry trades
+    require crude and DXY hedging overlays to be viable in risk-adjusted terms.
+  </div>
+</div>
+
+<!-- CS 4.3 -->
+<div class="cs">
+  <div class="cs-head">
+    <div class="cs-title">4.3 &nbsp; Indian Inflation Structure — Food, Fuel, and Core Dynamics</div>
+    <div class="cs-date">2024</div>
+  </div>
+  <div class="cs-meta">Finance &amp; Economics Club · Economic Analysis</div>
+  <div class="tags">
+    <span class="tag">Inflation</span>
+    <span class="tag">CPI Decomposition</span>
+    <span class="tag">Food &amp; Fuel</span>
+    <span class="tag">Policy Analysis</span>
+  </div>
+  <p>
+    Indian CPI's unusually high weight in food (45.86%) makes headline inflation extremely
+    sensitive to agricultural supply shocks — monsoon deficits, vegetable price spikes —
+    that are structurally outside the RBI's influence. This creates a persistent tension:
+    the RBI tightens in response to headline CPI, but the causal factor is supply-side,
+    not demand-driven. This case study decomposed CPI into food, fuel, and core components
+    to assess whether policy tightening in 2023–24 was targeting a controllable signal.
+  </p>
+  <div class="findings">
+    <strong>Conclusion:</strong> Core CPI (ex-food, fuel) trended down through 2023–24,
+    reaching 3.8% — below the RBI's 4% target. Headline CPI remained elevated due to
+    persistent vegetable price shocks (tomato, onion). Analysis suggested RBI tightening
+    was responding to a noisy signal; rate cuts were justified by core dynamics 6 months
+    before they arrived. Paper cited in club's inter-IIT macro debate submission.
+  </div>
+</div>
+
+<!-- §5 SKILLS -->
+<hr class="sr">
+<div class="sh"><span class="sn">§ 5</span><span>Technical and Analytical Competencies</span></div>
+<div class="sgrid">
+  <div>
+    <div class="sg">
+      <div class="sg-title">Quantitative Finance</div>
+      <ul>
+        <li>Cointegration, spread modelling (NSE/BSE)</li>
+        <li>Fama-MacBeth cross-sectional regression</li>
+        <li>CAPM / APT / Fama-French 3-factor</li>
+        <li>Kalman filter hedge ratio estimation</li>
+        <li>GARCH / HMM volatility regime models</li>
+        <li>Walk-forward backtesting methodology</li>
+        <li>Kelly criterion, position sizing</li>
+        <li>Options payoff &amp; scenario analysis</li>
+      </ul>
+    </div>
+    <div class="sg">
+      <div class="sg-title">Equity &amp; Macro Analysis</div>
+      <ul>
+        <li>DCF valuation (multi-scenario)</li>
+        <li>Peer comps &amp; EV/EBITDA analysis</li>
+        <li>Revenue quality decomposition</li>
+        <li>VAR models, impulse response functions</li>
+        <li>Yield curve and rate market analysis</li>
+        <li>FX carry decomposition</li>
+        <li>CPI component decomposition</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="sg">
+      <div class="sg-title">Programming &amp; Data</div>
+      <ul>
+        <li>Python — pandas, NumPy, statsmodels</li>
+        <li>NSE/BSE data sourcing &amp; cleaning</li>
+        <li>Bloomberg / NSE data interpretation</li>
+        <li>Matplotlib, seaborn — research charts</li>
+        <li>Excel — financial modelling, scenario tables</li>
+        <li>SQL — financial data querying</li>
+      </ul>
+    </div>
+    <div class="sg">
+      <div class="sg-title">Mathematics (Competitive Level)</div>
+      <ul>
+        <li>Probability &amp; stochastic processes</li>
+        <li>Linear algebra &amp; matrix methods</li>
+        <li>Combinatorics (IMO / KVPY standard)</li>
+        <li>Convex optimisation</li>
+        <li>Time series econometrics</li>
+        <li>Dynamic programming (600+ problems)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTNOTES -->
+<div class="fns">
+  <div class="fn"><span class="fn-n">1.</span>All strategy backtests use NSE/BSE historical price data sourced via public APIs. Walk-forward methodology applied throughout to prevent lookahead bias.</div>
+  <div class="fn"><span class="fn-n">2.</span>Stock pitches were prepared for educational and competition purposes within IIT Guwahati Finance &amp; Economics Club. No actual positions were taken.</div>
+  <div class="fn"><span class="fn-n">3.</span>Macro models use publicly available RBI, MOSPI, and Bloomberg consensus data. All regression results are indicative and subject to data revisions.</div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <span>Karanam, D. &nbsp;·&nbsp; Quantitative Finance Portfolio &nbsp;·&nbsp; IIT Guwahati, 2026</span>
+  <span>KVPY AIR 166 &nbsp;·&nbsp; IMO Scholar &nbsp;·&nbsp; ICPC Regionals</span>
+</div>
+
+</div>
+</body>
+</html>
