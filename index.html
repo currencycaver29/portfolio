@@ -27,9 +27,9 @@ body { background: var(--paper); color: var(--ink); font-family: var(--serif); l
 /* TITLE BLOCK */
 .title { text-align:center; margin-bottom:40px; }
 .title h1 { font-family:var(--display); font-size:2.05rem; font-weight:700; line-height:1.18; color:var(--ink); margin-bottom:16px; }
-.title h1 em { font-style:italic; color:var(--accent); }
+.title h1 em { font-style:normal; color:var(--accent); }
 .title .author { font-size:1.05rem; color:var(--ink-soft); margin-bottom:5px; }
-.title .affil { font-size:0.79rem; color:var(--muted); font-style:italic; line-height:1.65; margin-bottom:18px; }
+.title .affil { font-size:0.79rem; color:var(--muted); font-style:normal; line-height:1.65; margin-bottom:18px; }
 .title .contact { font-family:var(--mono); font-size:0.76rem; color:var(--faint); font-weight:300; }
 
 /* ABSTRACT */
@@ -38,7 +38,7 @@ body { background: var(--paper); color: var(--ink); font-family: var(--serif); l
 .abstract p { font-size:0.87rem; line-height:1.78; color:var(--ink-soft); text-align:justify; hyphens:auto; margin:0; }
 
 .kw { margin:14px 36px 40px; font-size:0.79rem; color:var(--muted); }
-.kw strong { font-style:italic; color:var(--ink-soft); }
+.kw strong { font-style:normal; color:var(--ink-soft); }
 
 /* SECTION */
 hr.sr { border:none; border-top:1px solid var(--rule); margin:42px 0 26px; }
@@ -54,7 +54,7 @@ table.ct tbody tr { border-bottom:1px solid var(--rule-lt); }
 table.ct tbody tr:last-child { border-bottom:none; }
 table.ct td { padding:8px 10px; vertical-align:top; color:var(--ink-soft); line-height:1.5; }
 table.ct td:first-child { font-weight:600; color:var(--ink); width:28%; }
-table.ct td.it { font-style:italic; color:var(--muted); font-size:0.79rem; }
+table.ct td.it { font-style:normal; color:var(--muted); font-size:0.79rem; }
 
 /* CASE STUDY ENTRIES */
 .cs { margin-bottom:36px; padding-bottom:36px; border-bottom:1px dashed var(--rule-lt); }
@@ -62,29 +62,30 @@ table.ct td.it { font-style:italic; color:var(--muted); font-size:0.79rem; }
 .cs-head { display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:5px; }
 .cs-title { font-family:var(--serif); font-size:1.02rem; font-weight:600; color:var(--ink); flex:1; }
 .cs-date { font-family:var(--mono); font-size:0.7rem; color:var(--faint); font-weight:300; white-space:nowrap; }
-.cs-meta { font-size:0.75rem; color:var(--muted); font-style:italic; margin-bottom:10px; }
+.cs-meta { font-size:0.75rem; color:var(--muted); font-style:normal; margin-bottom:10px; }
 .tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:11px; }
-.tag { font-size:0.67rem; font-family:var(--serif); font-style:italic; color:var(--muted); border:1px solid var(--rule); padding:1px 8px; }
+.tag { font-size:0.67rem; font-family:var(--serif); font-style:normal; color:var(--muted); border:1px solid var(--rule); padding:1px 8px; }
 .cs p { font-size:0.9rem; line-height:1.74; color:var(--ink-soft); text-align:justify; hyphens:auto; margin-bottom:9px; }
 
 /* SUBSECTION LABEL */
-.sublabel { font-size:0.78rem; font-weight:600; font-style:italic; color:var(--ink); margin:14px 0 5px; }
+.sublabel { font-size:0.78rem; font-weight:600; font-style:normal; color:var(--ink); margin:14px 0 5px; }
 
 /* FINDINGS BOX */
-.findings { background:var(--paper2); border-left:2px solid var(--rule); padding:10px 16px; font-size:0.82rem; color:var(--muted); font-style:italic; line-height:1.65; margin-top:10px; }
+.findings { background:var(--paper2); border-left:2px solid var(--rule); padding:10px 16px; font-size:0.82rem; color:var(--muted); font-style:normal; line-height:1.65; margin-top:10px; }
 .findings strong { color:var(--ink-soft); font-style:normal; }
 
 /* SKILLS GRID */
 .sgrid { display:grid; grid-template-columns:1fr 1fr; gap:0 44px; }
 .sg { margin-bottom:22px; }
-.sg-title { font-size:0.79rem; font-weight:600; font-style:italic; color:var(--ink); margin-bottom:6px; padding-bottom:4px; border-bottom:1px solid var(--rule-lt); }
+.sg-title { font-size:0.79rem; font-weight:600; font-style:normal; color:var(--ink); margin-bottom:6px; padding-bottom:4px; border-bottom:1px solid var(--rule-lt); }
 .sg ul { list-style:none; font-size:0.84rem; color:var(--ink-soft); line-height:1.85; }
 .sg ul li::before { content:'—'; color:var(--rule); margin-right:8px; font-family:var(--mono); font-size:0.68rem; }
 
 /* FOOTNOTES / COLOPHON */
 .fns { margin-top:50px; padding-top:12px; border-top:1px solid var(--rule); }
-.fn { font-size:0.75rem; color:var(--faint); font-style:italic; line-height:1.65; margin-bottom:4px; }
+.fn { font-size:0.75rem; color:var(--faint); font-style:normal; line-height:1.65; margin-bottom:4px; }
 .fn-n { font-family:var(--mono); font-size:0.67rem; color:var(--accent); font-style:normal; margin-right:4px; }
+em, i { font-style: normal; }
 .colophon { margin-top:54px; padding-top:14px; border-top:2px solid var(--ink); display:flex; justify-content:space-between; font-size:0.7rem; color:var(--muted); letter-spacing:.06em; }
 
 @media(max-width:620px){
