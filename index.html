@@ -80,8 +80,6 @@
   .art-box { position: relative; width: 100%; max-width: 820px; height: 100%; display: flex; justify-content: flex-end; align-items: flex-end; }
   .art-circle { position: absolute; top: 15%; left: 15%; width: 400px; height: 400px; border-radius: 50%; background: var(--pink); z-index: -1; }
   .art-rect { position: absolute; top: 25%; right: -5%; width: 350px; height: 550px; background: var(--lime); z-index: -1; }
-  .art-photo { height: 100%; width: auto; object-fit: contain; object-position: bottom; position: relative; z-index: 1;
-               filter: drop-shadow(2px 2px 0 #000) drop-shadow(-2px -2px 0 #000) drop-shadow(-2px 2px 0 #000) drop-shadow(2px -2px 0 #000); }
   .art-mono { position: relative; z-index: 1; margin: 0 9% 12% 0; width: 300px; height: 380px; background: var(--white); border: 3px solid var(--ink);
               border-radius: 18px; box-shadow: var(--s4); display: grid; place-items: center; text-align: center; transform: rotate(2deg); }
   .art-mono b { font-size: 120px; letter-spacing: -.07em; line-height: 1; display: block; }
@@ -357,12 +355,11 @@
         <div class="art-box">
           <div class="art-circle"></div>
           <div class="art-rect"></div>
-          <img class="art-photo" src="assets/profile-cutout.webp" alt="Divij Karanam" width="1800" height="1794" fetchpriority="high" decoding="async" onerror="this.replaceWith(document.getElementById('mono-tpl').content.cloneNode(true))">
+          <div class="art-mono"><div><b>DK</b><span class="kicker" style="color:var(--mute)">IIT Guwahati · ECE '26</span></div></div>
         </div>
       </div>
     </div>
   </section>
-  <template id="mono-tpl"><div class="art-mono"><div><b>DK</b><span class="kicker" style="color:var(--mute)">IIT Guwahati · ECE '26</span></div></div></template>
 
   <!-- about -->
   <section id="about" class="block" style="overflow:hidden">
