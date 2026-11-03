@@ -65,6 +65,7 @@
   .hero-in { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; padding: 160px 48px 40px; display: flex; }
   .hero-copy { width: 55%; position: relative; z-index: 3; }
   .hero h1 { font-size: clamp(56px, 7.4vw, 96px); line-height: 1.05; letter-spacing: -.035em; font-weight: 700; white-space: nowrap; }
+  .hero h1 .nw { white-space: nowrap; }
   .hero h1 .dot { display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: var(--lime); margin-left: 8px; vertical-align: baseline; }
   .typed { margin-top: 16px; display: inline-flex; align-items: center; width: 330px; height: 58px; padding: 0 16px; background: var(--pink);
            border: 2px solid var(--ink); box-shadow: var(--s1); font: 700 clamp(18px, 2.2vw, 28px) var(--mono); letter-spacing: .1em; text-transform: uppercase; }
@@ -338,7 +339,7 @@
   @media (max-width: 1023px) {
     .hero-in { flex-direction: column; padding: 128px 24px 0; }
     .hero-copy { width: 100%; }
-    .hero h1 { white-space: normal; }
+    .hero h1 { white-space: normal; } .hero h1 .dot { width: 14px; height: 14px; margin-left: 4px; }
     .hero-art { position: relative; width: 100%; height: 60vh; min-height: 380px; margin-top: 24px; }
     .art-box { justify-content: center; margin: 0 auto; max-width: 500px; }
     .art-circle { top: 20%; left: 5%; width: 250px; height: 250px; } .art-rect { top: 30%; right: 0; width: 220px; height: 350px; }
@@ -411,7 +412,7 @@
   <section class="hero">
     <div class="hero-in">
       <div class="hero-copy">
-        <h1>Divij Karanam<span class="dot"></span></h1>
+        <h1>Divij <span class="nw">Karanam<span class="dot"></span></span></h1>
         <div class="typed" aria-label="ML Research"><span id="typed">ML RESEARCH</span><i></i></div>
         <p class="sub">Measuring how AI really behaves on slow networks, small devices and the 22 languages of India, then publishing the code and data behind every result.</p>
         <div class="stack-btns">
@@ -424,7 +425,7 @@
         <div class="art-box">
           <div class="art-circle"></div>
           <div class="art-rect"></div>
-          <img class="art-photo" src="assets/profile-cutout.png" alt="" onerror="this.replaceWith(document.getElementById('mono-tpl').content.cloneNode(true))">
+          <img class="art-photo" src="assets/profile-cutout.webp" alt="Divij Karanam" onerror="this.replaceWith(document.getElementById('mono-tpl').content.cloneNode(true))">
         </div>
       </div>
     </div>
