@@ -122,19 +122,6 @@
   .arrows { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 16px; font-size: 15px; font-weight: 700; }
   .arrows li { display: flex; gap: 8px; transition: transform .2s; } .arrows li:hover { transform: translateX(4px); }
   .arrows li::before { content: "→"; font-weight: 800; }
-  .work { margin-top: 24px; background-color: var(--dark); color: #fff; overflow: hidden;
-          background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 2px, transparent 2px 6px), repeating-linear-gradient(-45deg, rgba(0,0,0,.3) 0 2px, transparent 2px 6px); }
-  .work .ttl { display: flex; align-items: center; gap: 16px; }
-  .work .ico { width: 48px; height: 48px; background: var(--blue); transition: transform .7s; } .work:hover .ico { transform: rotate(180deg); }
-  .work .ico svg { color: #fff; width: 24px; height: 24px; }
-  .work h3 { font-size: 20px; } .work .ttl p { font: 500 14px var(--mono); color: var(--mute); }
-  .steps { position: relative; margin-top: 32px; display: flex; gap: 16px; }
-  .steps::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; border-top: 1px dashed #555; }
-  .step { position: relative; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-  .step > span { font: 700 10px var(--mono); color: var(--mute); background: var(--dark); padding-right: 12px; width: fit-content; position: relative; transition: color .2s; }
-  .step div { height: 100%; border: 1px solid #444; border-radius: 6px; background: var(--dark-2); padding: 12px; transition: transform .3s, border-color .3s; }
-  .step:hover > span { color: var(--lime); } .step:hover div { border-color: var(--lime); transform: translateY(-4px); }
-  .step h4 { color: var(--lime); font-size: 14px; } .step p { color: #9a9993; font: 500 12px var(--mono); margin-top: 4px; }
   .focus { margin-top: 24px; overflow: hidden; }
   .focus .glow { right: -64px; top: -64px; width: 128px; height: 128px; background: rgba(255,144,232,.25); transition: transform .7s; }
   .focus:hover .glow { transform: scale(1.5); }
@@ -311,7 +298,6 @@
     .mobile-nav.open { display: flex; }
     .mobile-nav a { padding: 12px; font-weight: 700; text-decoration: none; border-radius: 6px; }
     .mobile-nav a:hover { background: var(--pink); }
-    .steps { flex-direction: column; } .steps::before { display: none; }
     .skills { grid-template-columns: 1fr; } .skills .card:nth-child(3n+2) { transform: none; }
     .tl::before { left: 32px; } .tl-dot { left: 32px; }
     .tl-row, .tl-row:nth-child(even) { flex-direction: row; }
@@ -347,8 +333,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
       <a class="icon-btn" href="https://www.linkedin.com/in/divjkarnm" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-      <a class="icon-btn" href="https://doi.org/10.5281/zenodo.23885241" target="_blank" rel="noopener" aria-label="Research on Zenodo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6.5A2.5 2.5 0 0 0 4 21.5"/><path d="M8 7h8M8 11h6"/></svg></a>
       <a class="pill-btn" href="#projects">Papers</a>
       <button class="burger" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
@@ -373,7 +357,6 @@
         <div class="stack-btns">
           <a class="solid" href="#projects">View Projects</a>
           <a href="#contact">Contact Me</a>
-          <a href="#projects">Read Papers</a>
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
@@ -415,18 +398,6 @@
             <li>Packet-level network emulators on Linux</li>
             <li>Mobile ML products: NaturaLens</li>
           </ul>
-        </div>
-      </div>
-      <div class="card work">
-        <div class="ttl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
-          <div><h3>How I work</h3><p>Research workflow</p></div></div>
-        <div class="steps">
-          <div class="step"><span>01</span><div><h4>Question</h4><p>Pick a real constraint</p></div></div>
-          <div class="step"><span>02</span><div><h4>Emulate</h4><p>Realistic conditions</p></div></div>
-          <div class="step"><span>03</span><div><h4>Measure</h4><p>Seeds &amp; repetitions</p></div></div>
-          <div class="step"><span>04</span><div><h4>Verify</h4><p>Against references</p></div></div>
-          <div class="step"><span>05</span><div><h4>Tune fairly</h4><p>Best baselines</p></div></div>
-          <div class="step"><span>06</span><div><h4>Publish</h4><p>Paper, code &amp; data</p></div></div>
         </div>
       </div>
       <div class="card hov focus">
@@ -583,7 +554,6 @@
             <div class="socials">
               <a href="https://github.com/currencycaver29" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3"/></svg></a>
               <a class="pink" href="https://www.linkedin.com/in/divjkarnm" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3"/></svg></a>
-              <a class="blue" href="https://doi.org/10.5281/zenodo.23885241" target="_blank" rel="noopener">Zenodo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3"/></svg></a>
             </div>
           </div>
         </div>
