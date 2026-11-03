@@ -244,8 +244,10 @@
 
   /* contact */
   .contact { background-color: var(--paper); background-image: radial-gradient(#d1d1d1 2px, transparent 2px); background-size: 24px 24px; }
-  .contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px; }
-  .hello { background: var(--lime); border: 3px solid var(--ink); border-radius: 24px; box-shadow: var(--s4); padding: 48px; display: flex; flex-direction: column; justify-content: space-between; }
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .hello { background: var(--lime); border: 3px solid var(--ink); border-radius: 24px; box-shadow: var(--s4); padding: 48px; display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; }
+  .hello > div:last-child { width: min(440px, 100%); flex-shrink: 0; }
+  .hello .socials { margin-top: 0; }
   .hello .k { display: inline-block; background: var(--ink); color: var(--lime); font: 700 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; padding: 4px 12px; border-radius: 3px; margin-bottom: 24px; }
   .hello h2 { font-size: clamp(48px, 5.4vw, 64px); font-weight: 800; line-height: .95; letter-spacing: -.035em; }
   .hello h2 .dot { color: var(--pink); }
@@ -256,12 +258,6 @@
   .ping::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #4ade80; animation: ping 1.4s cubic-bezier(0,0,.2,1) infinite; }
   .ping::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--lime); border: 1.5px solid var(--ink); }
   @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
-  .copy-row { margin-top: 48px; display: flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--white); border: 3px solid var(--ink);
-              border-radius: 12px; box-shadow: var(--s2); padding: 8px; }
-  .copy-row span { min-width: 0; padding-left: 12px; font: 700 14px var(--mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .copy-row button { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: #fff; border: 0; border-radius: 8px; padding: 10px 20px;
-                     font: 700 12px var(--sans); cursor: pointer; transition: transform .2s; flex: none; }
-  .copy-row button:hover { transform: translateY(-2px); }
   .socials { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
   .socials a { display: flex; align-items: center; justify-content: space-between; border: 3px solid var(--ink); border-radius: 12px; padding: 12px 16px; font-size: 14px;
                font-weight: 700; text-decoration: none; box-shadow: var(--s2); background: var(--white); transition: transform .2s; }
@@ -269,29 +265,6 @@
   .socials a.dark { background: var(--ink); color: var(--paper); } .socials a.blue { background: var(--blue); color: #fff; } .socials a.pink { background: var(--pink); }
   .socials svg { width: 18px; height: 18px; }
   .socials a:last-child:nth-child(odd) { grid-column: 1 / -1; }
-  form.msg { background: var(--white); border: 3px solid var(--ink); border-radius: 24px; box-shadow: var(--s4); padding: 48px; display: flex; flex-direction: column; }
-  form.msg h3 { font-size: clamp(30px, 3vw, 36px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
-  form.msg .hint { font: 700 14px var(--mono); color: var(--mute); margin-bottom: 32px; }
-  .lab { font: 700 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; display: block; margin-bottom: 12px; }
-  .topics { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .topics button { padding: 6px 16px; border-radius: 999px; border: 2.5px solid var(--ink); background: var(--white); font: 700 13px var(--sans); cursor: pointer; transition: all .2s; color: var(--ink); }
-  .topics button:hover { transform: translateY(-2px); box-shadow: 2px 2px 0 0 var(--ink); }
-  .topics button[aria-pressed="true"] { background: var(--ink); color: #fff; box-shadow: 2.5px 2.5px 0 0 var(--pink); transform: none; }
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
-  .fld { display: flex; flex-direction: column; gap: 8px; position: relative; }
-  .fld label { font: 700 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; }
-  .fld input, .fld textarea { border: 2.5px solid var(--ink); border-radius: 12px; background: var(--white); padding: 12px 16px; font: 500 15px var(--sans); color: var(--ink);
-                              outline: none; transition: box-shadow .2s; width: 100%; }
-  .fld input::placeholder, .fld textarea::placeholder { color: var(--mute); }
-  .fld input:focus, .fld textarea:focus { box-shadow: var(--s2); }
-  .fld textarea { resize: none; padding-bottom: 32px; line-height: 1.6; }
-  .counter { position: absolute; bottom: 12px; right: 16px; font: 700 10px var(--mono); color: var(--mute); }
-  .send-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 32px; }
-  .send-row p { font: 700 11px var(--mono); color: var(--mute); max-width: 230px; line-height: 1.6; }
-  .send { display: inline-flex; align-items: center; gap: 8px; border: 3px solid var(--ink); border-radius: 12px; padding: 12px 24px; font: 700 16px var(--sans);
-          background: var(--pink); box-shadow: var(--s2); cursor: pointer; transition: transform .2s; color: var(--ink); }
-  .send:hover { transform: translateY(-4px); } .send:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 0 var(--ink); }
-  .send svg { width: 16px; height: 16px; }
 
   /* footer */
   footer { background: var(--ink); color: var(--paper); border-top: 2px solid var(--ink); }
@@ -330,6 +303,7 @@
     .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 860px) {
+    .hello { flex-direction: column; align-items: stretch; } .hello > div:last-child { width: 100%; } .hello .socials { margin-top: 40px; }
     nav.main, .bar-right .icon-btn, .bar-right .pill-btn { display: none; }
     .burger { display: grid; place-items: center; }
     .mobile-nav { position: absolute; top: calc(100% - 4px); left: 16px; right: 16px; background: var(--paper); border: 2px solid var(--ink); border-radius: 12px;
@@ -351,9 +325,8 @@
     .typed { width: 260px; height: 50px; }
     .card, .tl-card, .approach { padding: 24px; }
     .case-body { padding: 24px; }
-    .hello, form.msg { padding: 28px; }
-    .two, .socials, .stat-grid { grid-template-columns: 1fr; }
-    .send-row { flex-direction: column-reverse; align-items: flex-start; }
+    .hello { padding: 28px; }
+    .socials, .stat-grid { grid-template-columns: 1fr; }
     .foot { flex-direction: column; text-align: center; }
     .head .kicker { display: none; }
     .actions { flex-direction: column; } .actions > * + * { border-left: 0; border-top: 2px solid var(--ink); }
@@ -607,38 +580,13 @@
             <div class="status"><span class="ping"></span>Based in Hyderabad, India</div>
           </div>
           <div>
-            <div class="copy-row"><span id="handle">github.com/currencycaver29</span>
-              <button type="button" id="copy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><span>Copy</span></button></div>
             <div class="socials">
               <a href="https://github.com/currencycaver29" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3"/></svg></a>
               <a class="pink" href="https://www.linkedin.com/in/divjkarnm" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3"/></svg></a>
               <a class="blue" href="https://doi.org/10.5281/zenodo.23885241" target="_blank" rel="noopener">Zenodo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3"/></svg></a>
-              <a class="dark" href="https://github.com/ashhart/TensorFold/pull/1988" target="_blank" rel="noopener">Open source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3"/></svg></a>
             </div>
           </div>
         </div>
-        <form class="msg reveal" id="msg" novalidate>
-          <h3>Send a message</h3>
-          <p class="hint">Tell me what you're working on.</p>
-          <span class="lab">I'm reaching out about</span>
-          <div class="topics" role="group" aria-label="Topic">
-            <button type="button" aria-pressed="true">Research</button>
-            <button type="button" aria-pressed="false">Role</button>
-            <button type="button" aria-pressed="false">Project collab</button>
-            <button type="button" aria-pressed="false">Just saying hi</button>
-          </div>
-          <div class="two">
-            <div class="fld"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" placeholder="Jane Doe" required></div>
-            <div class="fld"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required></div>
-          </div>
-          <div class="fld"><label for="f-msg">Message</label>
-            <textarea id="f-msg" name="message" rows="6" maxlength="500" placeholder="What's the project or role, and how can I help?" required></textarea>
-            <span class="counter" id="counter">0 / 500</span></div>
-          <div class="send-row">
-            <p id="note">Your message is passed to me through GitHub.</p>
-            <button class="send" type="submit">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21.7a.5.5 0 0 0 .9 0l6.5-19a.5.5 0 0 0-.6-.6l-19 6.5a.5.5 0 0 0 0 .9l7.9 3.2a2 2 0 0 1 1.1 1.1z"/><path d="M21.9 2.1 10.9 13.1"/></svg></button>
-          </div>
-        </form>
       </div>
     </div>
   </section>
@@ -653,9 +601,6 @@
 </footer>
 
 <script>
-  // Contact email for the form. Empty on purpose: the form then hands the message to LinkedIn instead of exposing an address.
-  const CONTACT_EMAIL = "";
-
   // mobile menu
   const burger = document.querySelector(".burger"), mnav = document.getElementById("mnav");
   burger.addEventListener("click", () => { const o = mnav.classList.toggle("open"); burger.setAttribute("aria-expanded", o); });
@@ -687,33 +632,6 @@
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .1 });
     els.forEach(el => io.observe(el));
   } else els.forEach(el => el.classList.add("in"));
-
-  // copy handle
-  document.getElementById("copy").addEventListener("click", e => {
-    navigator.clipboard?.writeText("https://" + document.getElementById("handle").textContent);
-    e.currentTarget.querySelector("span").textContent = "Copied";
-  });
-
-  // form
-  const topics = document.querySelectorAll(".topics button");
-  topics.forEach(b => b.addEventListener("click", () => topics.forEach(x => x.setAttribute("aria-pressed", x === b))));
-  const msg = document.getElementById("f-msg"), counter = document.getElementById("counter");
-  msg.addEventListener("input", () => counter.textContent = `${msg.value.length} / 500`);
-  document.getElementById("msg").addEventListener("submit", e => {
-    e.preventDefault();
-    const f = e.target, note = document.getElementById("note");
-    if (!f.reportValidity()) return;
-    const topic = document.querySelector('.topics [aria-pressed="true"]').textContent;
-    const body = `${f.message.value}\n\nFrom: ${f.name.value} <${f.email.value}>`;
-    if (CONTACT_EMAIL) {
-      location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("[Portfolio] " + topic)}&body=${encodeURIComponent(body)}`;
-      note.textContent = "Opening your email app…";
-    } else {
-      navigator.clipboard?.writeText(`[${topic}] ${body}`).catch(() => {});
-      note.textContent = "Thanks! Your message is copied. Paste it in a LinkedIn message to me.";
-      window.open("https://www.linkedin.com/in/divjkarnm", "_blank", "noopener");
-    }
-  });
 </script>
 </body>
 </html>
