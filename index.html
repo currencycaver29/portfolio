@@ -212,7 +212,6 @@
   .shot { flex: 1; position: relative; min-height: 300px; overflow: hidden; background: #f3f3f3; }
   .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 14px; transition: transform .7s ease-out; }
   .case:hover .shot img { transform: scale(1.05); }
-  .shot.owl { background: var(--lime); } .shot.owl img { padding: 22%; }
   .actions { display: flex; background: var(--white); border-top: 2px solid var(--ink); }
   .actions a, .actions span { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 8px; font-size: 14px; font-weight: 700; text-decoration: none;
                               transition: background .2s, color .2s; text-align: center; }
@@ -488,16 +487,19 @@
       <div class="center-head reveal"><h2>Experience &amp; Education<span class="dot">.</span></h2><span class="kicker chip-box">Milestones timeline</span></div>
       <div class="tl">
         <div class="tl-row reveal"><div class="tl-dot"></div><div class="tl-side"><article class="tl-card">
-          <div class="tl-top"><div><h3>Technical Co-Founder</h3><div class="org">SHAIL.AI · IIT Guwahati incubated</div></div><span class="date">Startup</span></div>
-          <p>Building the technical side of SHAIL.AI, a government-funded startup incubated at IIT Guwahati.</p></article></div></div>
+          <div class="tl-top"><div><h3>Research Engineer</h3><div class="org">VIRTKOM · Part-time · Remote (Atlanta, USA)</div></div><span class="date">Sep 2026 – Present</span></div>
+          <p>Research on large-scale LLM pre-training infrastructure for heterogeneous, distributed compute. Focus on deep learning and distributed systems.</p></article></div></div>
+        <div class="tl-row reveal"><div class="tl-dot"></div><div class="tl-side"><article class="tl-card">
+          <div class="tl-top"><div><h3>App Developer</h3><div class="org">NaturaLens · Remote (Winnipeg, Canada)</div></div><span class="date">Jul 2026 – Present</span></div>
+          <p>Building NaturaLens, a mobile app that identifies wildlife from a photo and keeps a log of what you have found. React Native app, Next.js web and a species database built from GBIF and IUCN data.</p></article></div></div>
         <div class="tl-row reveal"><div class="tl-dot"></div><div class="tl-side"><article class="tl-card">
           <div class="tl-top"><div><h3>Open-Source Contributor</h3><div class="org">TensorFold · LLM inference engine</div></div><span class="date">Nov 2026</span></div>
           <p>Added Indian-script coverage, covering all 22 scheduled languages, to TensorFold's tokenizer parity suite, verified against 8 major LLM tokenizers. <a href="https://github.com/ashhart/TensorFold/pull/1988" target="_blank" rel="noopener">PR #1988 ↗</a> (under review)</p></article></div></div>
         <div class="tl-row reveal"><div class="tl-dot"></div><div class="tl-side"><article class="tl-card">
-          <div class="tl-top"><div><h3>Research Contributor</h3><div class="org">Finance &amp; Economics Club, IIT Guwahati</div></div><span class="date">2024 – 2025</span></div>
-          <p>Quantitative strategy research, stock pitches and macro case studies. <a href="finance.html">Quant finance portfolio →</a></p></article></div></div>
+          <div class="tl-top"><div><h3>Research Intern</h3><div class="org">Indian Institute of Technology Guwahati · On-site</div></div><span class="date">Jun 2025 – Jul 2025</span></div>
+          <p>Worked under Dr. Anirban Dasgupta, Department of Electronics and Electrical Engineering, building research tools in Python and Tkinter.</p></article></div></div>
         <div class="tl-row reveal"><div class="tl-dot"></div><div class="tl-side"><article class="tl-card">
-          <div class="tl-top"><div><h3>B.Tech — Electronics &amp; Communication Engineering</h3><div class="org">Indian Institute of Technology Guwahati</div></div><span class="date">Batch 2026</span></div>
+          <div class="tl-top"><div><h3>B.Tech — Electronics &amp; Communication Engineering</h3><div class="org">Indian Institute of Technology Guwahati</div></div><span class="date">2022 – 2026</span></div>
           <p>Coursework in probability and stochastic systems, linear algebra, digital signal processing and information theory.</p></article></div></div>
       </div>
     </div>
@@ -522,7 +524,7 @@
   <section id="projects" class="block">
     <div class="wrap">
       <div class="reveal"><div class="head"><h2>Featured Projects<span class="dot">.</span></h2><span class="kicker" style="color:var(--mute)">03 / Case studies</span></div>
-        <p class="sub-kick">Published research and real products, with code</p></div>
+        <p class="sub-kick">Published research, with open code and data</p></div>
       <div class="projects">
 
         <article class="case reveal">
@@ -588,24 +590,6 @@
               <a href="https://github.com/currencycaver29/iot-protocol-benchmark" target="_blank" rel="noopener">View Source</a>
               <a href="https://github.com/currencycaver29/iot-protocol-benchmark/blob/main/paper/main.pdf" target="_blank" rel="noopener">PDF ↗</a>
             </div>
-          </div>
-        </article>
-
-        <article class="case reveal">
-          <div class="case-body">
-            <div class="case-top"><span class="case-tag">Mobile ML Product</span><span class="case-num">04</span></div>
-            <h3>NaturaLens</h3>
-            <p class="lede">Point your phone at an animal, and NaturaLens names the species and keeps a log of what you have found.</p>
-            <div class="qa">
-              <div><h4>The Problem</h4><p>Identifying wildlife in the field needs an answer in seconds, often with poor connectivity.</p></div>
-              <div><h4>Key Decisions</h4><p>Ship with cloud identification through a Gemini proxy first, build a species database from GBIF and IUCN, and move to on-device inference once accuracy targets are met.</p></div>
-            </div>
-            <div class="metrics"><div><b>Mobile</b><span>React Native</span></div><div><b>Web</b><span>Next.js</span></div><div><b>GBIF</b><span>Species data</span></div></div>
-            <ul class="tech"><li>TypeScript</li><li>Expo</li><li>Next.js</li><li>Cloudflare Workers</li><li>Gemini API</li></ul>
-          </div>
-          <div class="case-side">
-            <div class="shot owl"><img src="assets/naturalens-owl.svg" alt="NaturaLens owl logo" loading="lazy"></div>
-            <div class="actions"><span>Private repository</span></div>
           </div>
         </article>
 
