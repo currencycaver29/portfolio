@@ -90,7 +90,6 @@
   .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
   .head h2 { font-size: clamp(40px, 6vw, 60px); font-weight: 700; letter-spacing: -.045em; line-height: 1; }
   .head h2 .dot { color: var(--blue); display: inline-block; transition: transform .3s; }
-  .head h2:hover .dot { transform: rotate(12deg); }
   .card { background: var(--white); border: 2px solid var(--ink); border-radius: 12px; box-shadow: var(--s2); padding: 32px; position: relative; }
   .card.hov { transition: transform .3s, box-shadow .3s; } .card.hov:hover { transform: translateY(-4px); box-shadow: var(--s3); }
   .glow { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
@@ -108,7 +107,6 @@
   .build { background: var(--pink); }
   .build .ttl { display: flex; align-items: center; gap: 12px; }
   .ico { width: 40px; height: 40px; flex: none; border: 2px solid var(--ink); border-radius: 6px; background: var(--white); display: grid; place-items: center; transition: transform .3s; }
-  .card:hover .ico { transform: rotate(12deg); }
   .ico svg { width: 20px; height: 20px; }
   .build h3 { font-size: 20px; }
   .arrows { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 16px; font-size: 15px; font-weight: 700; }
@@ -166,7 +164,6 @@
   .case-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
   .case-tag { border: 2px solid var(--ink); border-radius: 6px; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
               background: var(--pink); transition: transform .3s; }
-  .case:hover .case-tag { transform: rotate(2deg); }
   .case:nth-child(2) .case-tag { background: var(--ink); color: var(--paper); } .case:nth-child(3) .case-tag { background: var(--blue); color: #fff; }
   .case:nth-child(4) .case-tag { background: var(--lime); }
   .case-num { font: 700 30px var(--mono); color: rgba(135,134,128,.4); transition: color .3s; } .case:hover .case-num { color: var(--mute); }
@@ -204,7 +201,6 @@
   /* quick profile */
   .impact { background: var(--ink); border-block: 6px solid var(--ink); color: var(--paper); overflow: hidden; }
   .impact h2 { font-size: clamp(44px, 6vw, 60px); font-weight: 800; letter-spacing: -.045em; transition: transform .3s; }
-  .impact h2:hover { transform: skewX(2deg); }
   .impact h2 .dot { color: var(--lime); }
   .impact .tagline { font: 700 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: rgba(246,245,240,.6); background: rgba(255,255,255,.1);
                      border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 4px 12px; }
