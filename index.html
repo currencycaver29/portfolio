@@ -221,26 +221,6 @@
   .actions span { color: var(--mute); cursor: default; }
   .actions svg { width: 16px; height: 16px; }
 
-  /* credentials (publications) */
-  .creds { background: var(--lime); border-block: 6px solid var(--ink); }
-  .creds h2 { font-size: clamp(44px, 6vw, 60px); font-weight: 800; letter-spacing: -.045em; line-height: 1; }
-  .creds h2 .dot { color: var(--pink); }
-  .creds .meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-top: 16px;
-                 font: 700 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: rgba(17,17,17,.8); }
-  .cred-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
-  .cred { background: var(--white); border: 3px solid var(--ink); border-radius: 12px; box-shadow: 6px 6px 0 #000; padding: 32px; display: flex; flex-direction: column;
-          justify-content: space-between; transition: transform .25s, box-shadow .25s; }
-  .cred:hover { transform: translateY(-4px); box-shadow: 8px 8px 0 #000; }
-  .cred .when { display: inline-block; border: 2px solid var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 11px; font-weight: 700; background: var(--lime);
-                box-shadow: 2px 2px 0 #000; margin-bottom: 20px; }
-  .cred:nth-child(2) .when { background: var(--pink); } .cred:nth-child(3) .when { background: var(--blue); color: #fff; } .cred:nth-child(4) .when { background: var(--ink); color: #fff; }
-  .cred h3 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
-  .cred p { font-size: 14px; color: var(--mute); }
-  .cred a.view { margin-top: 32px; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); text-decoration: none; transition: color .2s; }
-  .cred a.view:hover { color: var(--ink); }
-  .dark-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; background: var(--ink); color: var(--paper); padding: 12px 20px; font-size: 13px; font-weight: 700;
-              border-radius: 3px; text-decoration: none; transition: transform .2s; }
-  .dark-btn:hover { transform: translateY(-2px); }
 
   /* quick profile */
   .impact { background: var(--ink); border-block: 6px solid var(--ink); color: var(--paper); overflow: hidden; }
@@ -363,14 +343,13 @@
     .tl-row, .tl-row:nth-child(even) { flex-direction: row; }
     .tl-side, .tl-row:nth-child(even) .tl-side { width: 100%; padding: 0 0 0 72px; }
     .tl-top { flex-direction: column; }
-    .cred-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     body { font-size: 15px; }
     section.block { padding: 80px 16px; }
     .hero-in { padding: 120px 16px 0; }
     .typed { width: 260px; height: 50px; }
-    .card, .tl-card, .cred, .approach { padding: 24px; }
+    .card, .tl-card, .approach { padding: 24px; }
     .case-body { padding: 24px; }
     .hello, form.msg { padding: 28px; }
     .two, .socials, .stat-grid { grid-template-columns: 1fr; }
@@ -388,7 +367,7 @@
     <a class="brand" href="#top" aria-label="Divij Karanam, back to top"><span class="badge"><span>DK</span></span><b>Divij Karanam</b></a>
     <nav class="main" aria-label="Main">
       <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-      <a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#contact">Contact</a>
+      <a href="#projects">Projects</a><a href="#contact">Contact</a>
     </nav>
     <div class="bar-right">
       <a class="icon-btn" href="https://github.com/currencycaver29" target="_blank" rel="noopener" aria-label="GitHub">
@@ -397,14 +376,14 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
       <a class="icon-btn" href="https://doi.org/10.5281/zenodo.23885241" target="_blank" rel="noopener" aria-label="Research on Zenodo">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6.5A2.5 2.5 0 0 0 4 21.5"/><path d="M8 7h8M8 11h6"/></svg></a>
-      <a class="pill-btn" href="#publications">Papers</a>
+      <a class="pill-btn" href="#projects">Papers</a>
       <button class="burger" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     </div>
   </div>
   <nav class="mobile-nav" id="mnav" aria-label="Mobile">
     <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-    <a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#contact">Contact</a>
+    <a href="#projects">Projects</a><a href="#contact">Contact</a>
     <a href="https://www.linkedin.com/in/divjkarnm" target="_blank" rel="noopener">LinkedIn ↗</a>
   </nav>
 </header>
@@ -421,7 +400,7 @@
         <div class="stack-btns">
           <a class="solid" href="#projects">View Projects</a>
           <a href="#contact">Contact Me</a>
-          <a href="#publications">Read Papers</a>
+          <a href="#projects">Read Papers</a>
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
@@ -601,33 +580,10 @@
     </div>
   </section>
 
-  <!-- publications (credentials band) -->
-  <section id="publications" class="block creds">
-    <div class="wrap reveal">
-      <h2>Publications<span class="dot">.</span></h2>
-      <div class="meta"><span>Research preprints &amp; open source — Zenodo · GitHub</span><span>04 / Credentials</span></div>
-      <div class="cred-grid">
-        <div class="cred"><div><span class="when">Zenodo • Nov 2026</span><h3>The Token Tax on Indian Languages: Tokenizer Premiums Across All 22 Scheduled Languages and 14 Tokenizers</h3>
-          <p>Cost, context and fairness of LLM tokenizers for Indian languages, with romanization and Unicode normalization analyses.</p></div>
-          <a class="view" href="https://doi.org/10.5281/zenodo.23885241" target="_blank" rel="noopener">View paper ↗</a></div>
-        <div class="cred"><div><span class="when">Zenodo • Nov 2026</span><h3>Does Low-Communication Training Survive Bad Networks? DDP, DiLoCo and Hierarchical Aggregation</h3>
-          <p>Time and quality of distributed training strategies over emulated WAN links, validated with real distributed runs.</p></div>
-          <a class="view" href="https://doi.org/10.5281/zenodo.23889666" target="_blank" rel="noopener">View paper ↗</a></div>
-        <div class="cred"><div><span class="when">Zenodo • Nov 2026</span><h3>MQTT, CoAP and HTTP Under Constrained Networks: A Reproducible Benchmark with JSON and CBOR</h3>
-          <p>Latency, tail latency, data use and reliability of IoT protocols under emulated cellular and lossy links.</p></div>
-          <a class="view" href="https://doi.org/10.5281/zenodo.23885253" target="_blank" rel="noopener">View paper ↗</a></div>
-        <div class="cred"><div><span class="when">GitHub • Nov 2026</span><h3>TensorFold: Indian-Script Fixtures for Tokenizer Parity</h3>
-          <p>Open-source contribution to a 1.6k-star LLM inference engine, covering all 22 scheduled languages. Under review.</p></div>
-          <a class="view" href="https://github.com/ashhart/TensorFold/pull/1988" target="_blank" rel="noopener">View pull request ↗</a></div>
-      </div>
-      <a class="dark-btn" href="https://github.com/currencycaver29" target="_blank" rel="noopener">See all code on GitHub ↗</a>
-    </div>
-  </section>
-
   <!-- quick profile -->
   <section id="impact" class="block impact">
     <div class="wrap reveal">
-      <div class="head"><h2>Quick Profile<span class="dot">.</span></h2><span class="tagline">05 / At a glance</span></div>
+      <div class="head"><h2>Quick Profile<span class="dot">.</span></h2><span class="tagline">04 / At a glance</span></div>
       <div class="stat-grid">
         <div class="stat"><p class="n">B.Tech</p><p class="l">Electronics &amp; Communication</p><p class="s">IIT Guwahati · 2026</p></div>
         <div class="stat"><p class="n">Top 2%</p><p class="l">IMO</p><p class="s">NTSE Scholar</p></div>
@@ -645,7 +601,7 @@
       <div class="contact-grid">
         <div class="hello reveal">
           <div>
-            <span class="k">06 / Contact</span>
+            <span class="k">05 / Contact</span>
             <h2>Let's build<br>AI that<br>works<span class="dot">.</span></h2>
             <p>Open to research collaborations, open-source work and ML engineering opportunities.</p>
             <div class="status"><span class="ping"></span>Based in Hyderabad, India</div>
