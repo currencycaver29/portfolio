@@ -59,7 +59,7 @@
   .mobile-nav { display: none; }
 
   /* hero */
-  .hero { position: relative; min-height: 100vh; background: var(--paper); overflow: hidden; display: flex; }
+  .hero { position: relative; min-height: 100vh; background: var(--paper); overflow: hidden; display: flex; border-bottom: 3px solid var(--ink); }
   .hero::before { content: ""; position: absolute; inset: 0; opacity: .1; pointer-events: none;
                   background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px; }
   .hero-in { position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; padding: 160px 48px 40px; display: flex; }
@@ -86,12 +86,6 @@
               border-radius: 18px; box-shadow: var(--s4); display: grid; place-items: center; text-align: center; transform: rotate(2deg); }
   .art-mono b { font-size: 120px; letter-spacing: -.07em; line-height: 1; display: block; }
 
-  /* marquee */
-  .marquee { overflow: hidden; background: var(--ink); border-block: 2px solid var(--ink); padding: 12px 0; }
-  .marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
-  .marquee span { display: flex; align-items: center; gap: 24px; padding-right: 24px; color: var(--paper); font: 700 14px var(--mono); letter-spacing: .14em; text-transform: uppercase; }
-  .marquee span b { color: var(--pink); font-weight: 700; }
-  @keyframes marquee { to { transform: translateX(-50%); } }
 
   /* sections */
   section.block { padding: 112px 16px; position: relative; }
@@ -269,7 +263,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; transition: none; }
-    .marquee-track, .typed i, .ping::before { animation: none; }
+    .typed i, .ping::before { animation: none; }
   }
 
   @media (max-width: 1100px) {
@@ -369,9 +363,6 @@
     </div>
   </section>
   <template id="mono-tpl"><div class="art-mono"><div><b>DK</b><span class="kicker" style="color:var(--mute)">IIT Guwahati · ECE '26</span></div></div></template>
-
-  <!-- marquee -->
-  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
 
   <!-- about -->
   <section id="about" class="block" style="overflow:hidden">
@@ -575,11 +566,6 @@
   const burger = document.querySelector(".burger"), mnav = document.getElementById("mnav");
   burger.addEventListener("click", () => { const o = mnav.classList.toggle("open"); burger.setAttribute("aria-expanded", o); });
   mnav.addEventListener("click", e => { if (e.target.tagName === "A") { mnav.classList.remove("open"); burger.setAttribute("aria-expanded", false); } });
-
-  // marquee words (duplicated for a seamless loop)
-  const words = ["Question", "Emulate", "Measure", "Verify", "Tokenize", "Train", "Compress", "Publish"];
-  const track = document.getElementById("marquee");
-  track.innerHTML = Array(4).fill(words).flat().map(w => `<span>${w}<b>✦</b></span>`).join("");
 
   // typed role badge
   const roles = ["ML RESEARCH", "INDIC NLP", "DISTRIBUTED ML", "ON-DEVICE AI"];
